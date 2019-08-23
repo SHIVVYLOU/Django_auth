@@ -7,9 +7,10 @@
     <title>Django Auth</title>
 </head>
 <body>
+    <h1>Home</h1>
     <nav>
         <ul>
-            <li><a>Login</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
             <li><a>Register</a></li>
             <li><a>Profile</a></li>
@@ -23,6 +24,10 @@
         {% endfor %}
     </div>
     {% endif %}
-    
+    <!--<div>-->
+    <form method="POST">
+    {{ login_form }}
+    </form>
+    <!--</div>-->
 </body>
 </html>
