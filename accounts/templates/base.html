@@ -8,15 +8,17 @@
 </head>
 <body>
     <h1>
-    {% block page_heading %}
-    {% endblock %}
+    {% block page_heading %}{% endblock %}
     </h1>
     <nav>
         <ul>
-            <li><a href="{% url 'login' %}">Login</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            <li><a>Register</a></li>
-            <li><a>Profile</a></li>
+            {%  if user.is_authenticated %}
+                <li><a>Profile</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a>Register</a></li>
+            {% endif %}
         </ul>
     </nav>
     <hr>
@@ -27,6 +29,7 @@
         {% endfor %}
     </div>
     {% endif %}
+    {% block content %}{% endblock %}
     
 </body>
 </html>
